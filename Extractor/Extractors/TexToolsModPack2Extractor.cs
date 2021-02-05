@@ -4,6 +4,7 @@
 namespace TexToolsModExtractor.Extractors
 {
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
 	using System.IO.Compression;
 	using System.Linq;
@@ -11,14 +12,11 @@ namespace TexToolsModExtractor.Extractors
 	using Newtonsoft.Json;
 	using xivModdingFramework.Mods.DataContainers;
 
-	public class TexToolsModPack2Extractor : ExtractorBase
+	internal class TexToolsModPack2Extractor : ExtractorBase
 	{
-		public override void Extract(FileInfo file)
+		public override List<FileInfo> Extract(FileInfo file, DirectoryInfo outputDirectory)
 		{
-			string outputDirPath = Path.GetFileNameWithoutExtension(file.Name) + "_Extracted/";
-			DirectoryInfo outputDirectory = file.Directory.CreateSubdirectory(outputDirPath);
-			outputDirectory.Delete(true);
-			outputDirectory.Create();
+			List<FileInfo> extractedFiles = new List<FileInfo>();
 
 			string mplPath = outputDirectory + "ttmp.mpl";
 			string mpdPath = outputDirectory + "ttmp.mpd";
@@ -47,7 +45,7 @@ namespace TexToolsModExtractor.Extractors
 				{
 					foreach (ModsJson mods in modPack.SimpleModsList)
 					{
-						this.Extract(mods, pack, outputDirectory);
+						extractedFiles.Add(this.Extract(mods, pack, outputDirectory));
 					}
 				}
 
@@ -63,7 +61,7 @@ namespace TexToolsModExtractor.Extractors
 								{
 									string directoryName = page.PageIndex.ToString() + "_" + group.GroupName + "_" + option.Name;
 									DirectoryInfo dir = outputDirectory.CreateSubdirectory(directoryName);
-									this.Extract(mods, pack, dir);
+									extractedFiles.Add(this.Extract(mods, pack, dir));
 								}
 							}
 						}
@@ -75,9 +73,11 @@ namespace TexToolsModExtractor.Extractors
 			Console.WriteLine("Deleted MPD");
 			File.Delete(mplPath);
 			Console.WriteLine("Deleted MPL");
+
+			return extractedFiles;
 		}
 
-		private void Extract(ModsJson mods, SqPackStream pack, DirectoryInfo outputDirectory)
+		private FileInfo Extract(ModsJson mods, SqPackStream pack, DirectoryInfo outputDirectory)
 		{
 			Console.WriteLine(" > " + mods.FullPath);
 			FileResource dat = pack.ReadFile<FileResource>(mods.ModOffset);
@@ -87,7 +87,10 @@ namespace TexToolsModExtractor.Extractors
 			if (!fileInfo.Directory.Exists)
 				fileInfo.Directory.Create();
 
-			File.WriteAllBytes(fileInfo.FullName, dat.Data);
+			dat.SaveFile(fileInfo.FullName);
+
+			////File.WriteAllBytes(fileInfo.FullName, dat.Data);
+			return fileInfo;
 		}
 	}
 }

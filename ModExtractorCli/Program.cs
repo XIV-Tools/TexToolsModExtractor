@@ -4,7 +4,9 @@
 namespace TexToolsModExtractorCli
 {
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
+	using FfxivResourceConverter;
 	using TexToolsModExtractor;
 
 	public class Program
@@ -20,17 +22,18 @@ namespace TexToolsModExtractorCli
 			string path = args[0];
 			Console.WriteLine("Running extractor on file: " + path);
 
-			try
+			FileInfo inputModPack = new FileInfo(path);
+
+			string outputDirPath = Path.GetFileNameWithoutExtension(inputModPack.Name) + "_Extracted/";
+			DirectoryInfo outputDirectory = inputModPack.Directory.CreateSubdirectory(outputDirPath);
+			outputDirectory.Delete(true);
+			outputDirectory.Create();
+
+			List<FileInfo> files = Extractor.Extract(inputModPack, outputDirectory);
+
+			foreach (FileInfo extractedFile in files)
 			{
-				FileInfo file = new FileInfo(path);
-				Extractor.Extract(file);
-			}
-			catch (Exception ex)
-			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine(ex.Message);
-				Console.ReadKey();
-				throw;
+				ResourceConverter.Convert(extractedFile);
 			}
 
 			Console.WriteLine("Extraction complete");

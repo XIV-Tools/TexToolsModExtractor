@@ -21,50 +21,50 @@ using System.Collections.Generic;
 
 namespace xivModdingFramework.Mods.DataContainers
 {
-    public class ModPackData
-    {
-        /// <summary>
-        /// The name of the mod pack
-        /// </summary>
-        public string Name { get; set; }
+	internal class ModPackData
+	{
+		/// <summary>
+		/// The name of the mod pack
+		/// </summary>
+		public string Name { get; set; }
 
-        /// <summary>
-        /// The mod pack author
-        /// </summary>
-        public string Author { get; set; }
+		/// <summary>
+		/// The mod pack author
+		/// </summary>
+		public string Author { get; set; }
 
-        /// <summary>
-        /// The mod pack version
-        /// </summary>
-        public Version Version { get; set; }
+		/// <summary>
+		/// The mod pack version
+		/// </summary>
+		public Version Version { get; set; }
 
-        /// <summary>
-        /// The description for the mod pack
-        /// </summary>
-        public string Description { get; set; }
+		/// <summary>
+		/// The description for the mod pack
+		/// </summary>
+		public string Description { get; set; }
 
-        /// <summary>
-        /// Author's supplied URL for the modpack.
-        /// </summary>
-        public string Url { get; set; }
+		/// <summary>
+		/// Author's supplied URL for the modpack.
+		/// </summary>
+		public string Url { get; set; }
 
-        /// <summary>
-        /// A list of pages containing a list of mod groups for that particular page
-        /// </summary>
-        public List<ModPackPage> ModPackPages { get; set; }
+		/// <summary>
+		/// A list of pages containing a list of mod groups for that particular page
+		/// </summary>
+		public List<ModPackPage> ModPackPages { get; set; }
 
-        public class ModPackPage
-        {
-            /// <summary>
-            /// The page index
-            /// </summary>
-            public int PageIndex { get; set; }
+		public class ModPackPage
+		{
+			/// <summary>
+			/// The page index
+			/// </summary>
+			public int PageIndex { get; set; }
 
-            /// <summary>
-            /// The list of mod groups contained in the mod pack
-            /// </summary>
-            public List<ModGroup> ModGroups { get; set; }
+			/// <summary>
+			/// The list of mod groups contained in the mod pack
+			/// </summary>
+			public List<ModGroup> ModGroups { get; set; }
 
-        }
-    }
+		}
+	}
 }

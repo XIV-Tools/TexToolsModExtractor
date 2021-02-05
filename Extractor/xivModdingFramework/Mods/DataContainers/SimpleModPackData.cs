@@ -21,75 +21,75 @@ using System.Collections.Generic;
 
 namespace xivModdingFramework.Mods.DataContainers
 {
-    public class SimpleModPackData
-    {
-        /// <summary>
-        /// The name of the mod pack
-        /// </summary>
-        public string Name { get; set; }
+	internal class SimpleModPackData
+	{
+		/// <summary>
+		/// The name of the mod pack
+		/// </summary>
+		public string Name { get; set; }
 
-        /// <summary>
-        /// The mod pack author
-        /// </summary>
-        public string Author { get; set; }
+		/// <summary>
+		/// The mod pack author
+		/// </summary>
+		public string Author { get; set; }
 
-        /// <summary>
-        /// The mod pack version
-        /// </summary>
-        public Version Version { get; set; }
+		/// <summary>
+		/// The mod pack version
+		/// </summary>
+		public Version Version { get; set; }
 
-        /// <summary>
-        /// The modpack Url
-        /// </summary>
-        public string Url = "";
+		/// <summary>
+		/// The modpack Url
+		/// </summary>
+		public string Url = "";
 
-        /// <summary>
-        /// The description for the mod pack
-        /// </summary>
-        public string Description { get; set; }
+		/// <summary>
+		/// The description for the mod pack
+		/// </summary>
+		public string Description { get; set; }
 
-        /// <summary>
-        /// List of simple mod data
-        /// </summary>
-        public List<SimpleModData> SimpleModDataList { get; set; }
+		/// <summary>
+		/// List of simple mod data
+		/// </summary>
+		public List<SimpleModData> SimpleModDataList { get; set; }
 
-    }
+	}
 
-    public class SimpleModData
-    {
-        /// <summary>
-        /// The name of the item
-        /// </summary>
-        public string Name { get; set; }
+	internal class SimpleModData
+	{
+		/// <summary>
+		/// The name of the item
+		/// </summary>
+		public string Name { get; set; }
 
-        /// <summary>
-        /// The category of the item
-        /// </summary>
-        public string Category { get; set; }
+		/// <summary>
+		/// The category of the item
+		/// </summary>
+		public string Category { get; set; }
 
-        /// <summary>
-        /// The full path of the item data for the game
-        /// </summary>
-        public string FullPath { get; set; }
+		/// <summary>
+		/// The full path of the item data for the game
+		/// </summary>
+		public string FullPath { get; set; }
 
-        /// <summary>
-        /// The offset to where the mod data is located
-        /// </summary>
-        public long ModOffset { get; set; }
+		/// <summary>
+		/// The offset to where the mod data is located
+		/// </summary>
+		public long ModOffset { get; set; }
 
-        /// <summary>
-        /// If the entry is SE Default data or not.
-        /// </summary>
-        public bool IsDefault = false;
+		/// <summary>
+		/// If the entry is SE Default data or not.
+		/// </summary>
+		public bool IsDefault = false;
 
-        /// <summary>
-        /// The size of the mod data
-        /// </summary>
-        public int ModSize { get; set; }
+		/// <summary>
+		/// The size of the mod data
+		/// </summary>
+		public int ModSize { get; set; }
 
-        /// <summary>
-        /// The dat file associated with the item
-        /// </summary>
-        public string DatFile { get; set; }
-    }
+		/// <summary>
+		/// The dat file associated with the item
+		/// </summary>
+		public string DatFile { get; set; }
+	}
 }

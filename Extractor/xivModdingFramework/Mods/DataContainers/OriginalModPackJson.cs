@@ -19,36 +19,36 @@
 
 namespace xivModdingFramework.Mods.DataContainers
 {
-    public class OriginalModPackJson
-    {
-        /// <summary>
-        /// The name of the item
-        /// </summary>
-        public string Name { get; set; }
+	internal class OriginalModPackJson
+	{
+		/// <summary>
+		/// The name of the item
+		/// </summary>
+		public string Name { get; set; }
 
-        /// <summary>
-        /// The item category
-        /// </summary>
-        public string Category { get; set; }
+		/// <summary>
+		/// The item category
+		/// </summary>
+		public string Category { get; set; }
 
-        /// <summary>
-        /// The full path of the item data for the game
-        /// </summary>
-        public string FullPath { get; set; }
+		/// <summary>
+		/// The full path of the item data for the game
+		/// </summary>
+		public string FullPath { get; set; }
 
-        /// <summary>
-        /// The offset to where the mod data is located
-        /// </summary>
-        public long ModOffset { get; set; }
+		/// <summary>
+		/// The offset to where the mod data is located
+		/// </summary>
+		public long ModOffset { get; set; }
 
-        /// <summary>
-        /// The size of the mod data
-        /// </summary>
-        public int ModSize { get; set; }
+		/// <summary>
+		/// The size of the mod data
+		/// </summary>
+		public int ModSize { get; set; }
 
-        /// <summary>
-        /// The dat file associated with the item
-        /// </summary>
-        public string DatFile { get; set; }
-    }
+		/// <summary>
+		/// The dat file associated with the item
+		/// </summary>
+		public string DatFile { get; set; }
+	}
 }

@@ -4,18 +4,19 @@
 namespace TexToolsModExtractor
 {
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
 	using TexToolsModExtractor.Extractors;
 
 	public static class Extractor
 	{
-		public static void Extract(FileInfo file)
+		public static List<FileInfo> Extract(FileInfo file, DirectoryInfo outputDirectory)
 		{
 			if (!file.Exists)
 				throw new FileNotFoundException("Mod pack not found", file.FullName);
 
 			ExtractorBase extractor = GetExtractor(file.Extension);
-			extractor.Extract(file);
+			return extractor.Extract(file, outputDirectory);
 		}
 
 		private static ExtractorBase GetExtractor(string extension)

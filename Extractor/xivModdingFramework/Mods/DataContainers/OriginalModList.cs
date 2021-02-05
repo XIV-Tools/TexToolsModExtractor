@@ -17,47 +17,47 @@
 
 namespace xivModdingFramework.Mods.DataContainers
 {
-    class OriginalModList
-    {
-        /// <summary>
-        /// The modified items category
-        /// </summary>
-        public string category { get; set; }
+	internal class OriginalModList
+	{
+		/// <summary>
+		/// The modified items category
+		/// </summary>
+		public string category { get; set; }
 
-        /// <summary>
-        /// The modified items name
-        /// </summary>
-        public string name { get; set; }
+		/// <summary>
+		/// The modified items name
+		/// </summary>
+		public string name { get; set; }
 
-        /// <summary>
-        /// The internal path of the modified item
-        /// </summary>
-        public string fullPath { get; set; }
+		/// <summary>
+		/// The internal path of the modified item
+		/// </summary>
+		public string fullPath { get; set; }
 
-        /// <summary>
-        /// The oringial offset of the modified item
-        /// </summary>
-        /// <remarks>
-        /// Used to revert to the items original texture
-        /// </remarks>
-        public int originalOffset { get; set; }
+		/// <summary>
+		/// The oringial offset of the modified item
+		/// </summary>
+		/// <remarks>
+		/// Used to revert to the items original texture
+		/// </remarks>
+		public int originalOffset { get; set; }
 
-        /// <summary>
-        /// The modified offset of the modified item
-        /// </summary>
-        public int modOffset { get; set; }
+		/// <summary>
+		/// The modified offset of the modified item
+		/// </summary>
+		public int modOffset { get; set; }
 
-        /// <summary>
-        /// The size of the modified items data
-        /// </summary>
-        /// <remarks>
-        /// When importing a previously modified texture, this value is used to determine whether the modified data will be overwritten
-        /// </remarks>
-        public int modSize { get; set; }
+		/// <summary>
+		/// The size of the modified items data
+		/// </summary>
+		/// <remarks>
+		/// When importing a previously modified texture, this value is used to determine whether the modified data will be overwritten
+		/// </remarks>
+		public int modSize { get; set; }
 
-        /// <summary>
-        /// The dat file where the modified item is located
-        /// </summary>
-        public string datFile { get; set; }
-    }
+		/// <summary>
+		/// The dat file where the modified item is located
+		/// </summary>
+		public string datFile { get; set; }
+	}
 }

@@ -3,13 +3,11 @@
 
 namespace TexToolsModExtractor.Extractors
 {
-	using System;
 	using System.Collections.Generic;
 	using System.IO;
-	using System.Text;
 
-	public abstract class ExtractorBase
+	internal abstract class ExtractorBase
 	{
-		public abstract void Extract(FileInfo file);
+		public abstract List<FileInfo> Extract(FileInfo file, DirectoryInfo outputDirectory);
 	}
 }

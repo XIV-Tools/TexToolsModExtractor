@@ -6,12 +6,12 @@ namespace TexToolsModExtractor.Extractors
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
-	using System.Text;
 
-	public class TexToolsModPackExtractor : ExtractorBase
+	internal class TexToolsModPackExtractor : ExtractorBase
 	{
-		public override void Extract(FileInfo path)
+		public override List<FileInfo> Extract(FileInfo path, DirectoryInfo outputDirectory)
 		{
+			throw new NotImplementedException();
 		}
 	}
 }

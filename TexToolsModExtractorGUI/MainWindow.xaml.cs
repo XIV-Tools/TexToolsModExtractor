@@ -2,6 +2,8 @@
 using TexToolsModExtractor;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using FfxivResourceConverter;
 
 namespace TexToolsModExtractorGUI
 {
@@ -29,9 +31,17 @@ namespace TexToolsModExtractorGUI
 			dlg.ShowDialog();
 			this.OutputBox.Text = dlg.SelectedPath;
 		}
-	private void OnExtractClick(object sender, RoutedEventArgs e)
+
+		private void OnExtractClick(object sender, RoutedEventArgs e)
 		{
-			Extractor.Extract(new FileInfo(this.PathBox.Text));
+			FileInfo modPackFile = new FileInfo(this.PathBox.Text);
+			DirectoryInfo outputdirectory = new DirectoryInfo(this.OutputBox.Text);
+			List<FileInfo> files = Extractor.Extract(modPackFile, outputdirectory);
+			foreach (FileInfo extractedFile in files)
+			{
+				ResourceConverter.Convert(extractedFile);
+			}
+
 		}
 	}
 }

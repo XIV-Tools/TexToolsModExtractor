@@ -20,24 +20,24 @@ using System.Collections.Generic;
 
 namespace xivModdingFramework.Mods.DataContainers
 {
-    public class ModGroup
-    {
-        /// <summary>
-        /// The name of the mod options group
-        /// </summary>
-        public string GroupName { get; set; }
+	internal class ModGroup
+	{
+		/// <summary>
+		/// The name of the mod options group
+		/// </summary>
+		public string GroupName { get; set; }
 
-        /// <summary>
-        /// The type of selection for the options in the group
-        /// </summary>
-        /// <remarks>
-        /// This is either Single Selection or Multi Selection
-        /// </remarks>
-        public string SelectionType { get; set; }
+		/// <summary>
+		/// The type of selection for the options in the group
+		/// </summary>
+		/// <remarks>
+		/// This is either Single Selection or Multi Selection
+		/// </remarks>
+		public string SelectionType { get; set; }
 
-        /// <summary>
-        /// The list of options in the group
-        /// </summary>
-        public List<ModOption> OptionList { get; set; }
-    }
+		/// <summary>
+		/// The list of options in the group
+		/// </summary>
+		public List<ModOption> OptionList { get; set; }
+	}
 }
