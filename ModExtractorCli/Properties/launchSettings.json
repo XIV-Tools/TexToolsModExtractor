@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TextoolsModExtractorCli": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\Tests\\TestBasicMod.ttmp2"
+    }
+  }
+}

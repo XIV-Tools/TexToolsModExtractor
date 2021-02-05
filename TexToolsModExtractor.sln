@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexToolsModExtractor", "Extractor\TexToolsModExtractor.csproj", "{7FDE1E17-B329-49E4-8A88-EB9F77843AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextoolsModExtractorCli", "ModExtractorCli\TextoolsModExtractorCli.csproj", "{32E93771-FCD6-40F0-811D-702B12FBAA0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F23DFCD-0FF9-4A07-84FC-35C37E4B409E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FDE1E17-B329-49E4-8A88-EB9F77843AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDE1E17-B329-49E4-8A88-EB9F77843AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDE1E17-B329-49E4-8A88-EB9F77843AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDE1E17-B329-49E4-8A88-EB9F77843AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68DF1955-2464-4D5F-8476-1533521FBD47}
+	EndGlobalSection
+EndGlobal
