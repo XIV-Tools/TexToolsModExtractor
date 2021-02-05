@@ -1,4 +1,0 @@
-[submodule "xivModdingFramework"]
-	path = xivModdingFramework
-	url = https://github.com/TexTools/xivModdingFramework
-	branch = develop

@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xivModdingFramework", "xivModdingFramework\xivModdingFramework\xivModdingFramework.csproj", "{3FD70581-CF4A-43BB-9D60-1B0C429EFAE4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +26,6 @@ Global
 		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32E93771-FCD6-40F0-811D-702B12FBAA0D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FD70581-CF4A-43BB-9D60-1B0C429EFAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FD70581-CF4A-43BB-9D60-1B0C429EFAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FD70581-CF4A-43BB-9D60-1B0C429EFAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FD70581-CF4A-43BB-9D60-1B0C429EFAE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

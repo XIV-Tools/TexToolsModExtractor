@@ -4,17 +4,12 @@
 namespace TexToolsModExtractor.Extractors
 {
 	using System;
-	using System.Collections.Generic;
 	using System.IO;
 	using System.IO.Compression;
 	using System.Linq;
-	using System.Text;
-	using System.Threading;
-	using System.Threading.Tasks;
 	using Lumina.Data;
 	using Newtonsoft.Json;
 	using xivModdingFramework.Mods.DataContainers;
-	using xivModdingFramework.Mods.FileTypes;
 
 	public class TexToolsModPack2Extractor : ExtractorBase
 	{
