@@ -43,17 +43,31 @@ namespace TexToolsModExtractor.Extractors
 			FileStream fs = new FileStream(mpdPath, FileMode.Open);
 			using (SqPackStream pack = new SqPackStream(fs))
 			{
-				foreach (ModsJson mods in modPack.SimpleModsList)
+				if (modPack.SimpleModsList != null)
 				{
-					Console.WriteLine(" > " + mods.FullPath);
-					FileResource dat = pack.ReadFile<FileResource>(mods.ModOffset);
+					foreach (ModsJson mods in modPack.SimpleModsList)
+					{
+						this.Extract(mods, pack, outputDirectory);
+					}
+				}
 
-					FileInfo fileInfo = new FileInfo(outputDirectory.FullName + "/" + mods.FullPath);
-
-					if (!fileInfo.Directory.Exists)
-						fileInfo.Directory.Create();
-
-					File.WriteAllBytes(fileInfo.FullName, dat.Data);
+				if (modPack.ModPackPages != null)
+				{
+					foreach (ModPackPageJson page in modPack.ModPackPages)
+					{
+						foreach (ModGroupJson group in page.ModGroups)
+						{
+							foreach (ModOptionJson option in group.OptionList)
+							{
+								foreach (ModsJson mods in option.ModsJsons)
+								{
+									string directoryName = page.PageIndex.ToString() + "_" + group.GroupName + "_" + option.Name;
+									DirectoryInfo dir = outputDirectory.CreateSubdirectory(directoryName);
+									this.Extract(mods, pack, dir);
+								}
+							}
+						}
+					}
 				}
 			}
 
@@ -61,6 +75,19 @@ namespace TexToolsModExtractor.Extractors
 			Console.WriteLine("Deleted MPD");
 			File.Delete(mplPath);
 			Console.WriteLine("Deleted MPL");
+		}
+
+		private void Extract(ModsJson mods, SqPackStream pack, DirectoryInfo outputDirectory)
+		{
+			Console.WriteLine(" > " + mods.FullPath);
+			FileResource dat = pack.ReadFile<FileResource>(mods.ModOffset);
+
+			FileInfo fileInfo = new FileInfo(outputDirectory.FullName + "/" + mods.FullPath);
+
+			if (!fileInfo.Directory.Exists)
+				fileInfo.Directory.Create();
+
+			File.WriteAllBytes(fileInfo.FullName, dat.Data);
 		}
 	}
 }
