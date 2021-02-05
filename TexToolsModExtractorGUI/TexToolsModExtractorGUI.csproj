@@ -1,13 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWPF>true</UseWPF>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net5.0-windows</TargetFramework>
+	<UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Extractor\TexToolsModExtractor.csproj" />
+    <None Remove="Assets\XIVToolsIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\XIVToolsIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\Extractor\TexToolsModExtractor.csproj" />
   </ItemGroup>
 
 </Project>
