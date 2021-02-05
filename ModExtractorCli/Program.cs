@@ -4,6 +4,7 @@
 namespace TexToolsModExtractorCli
 {
 	using System;
+	using System.IO;
 	using TexToolsModExtractor;
 
 	public class Program
@@ -16,11 +17,12 @@ namespace TexToolsModExtractorCli
 				return;
 			}
 
-			string file = args[0];
-			Console.WriteLine("Running extractor on file: " + file);
+			string path = args[0];
+			Console.WriteLine("Running extractor on file: " + path);
 
 			try
 			{
+				FileInfo file = new FileInfo(path);
 				Extractor.Extract(file);
 			}
 			catch (Exception ex)
@@ -28,7 +30,7 @@ namespace TexToolsModExtractorCli
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine(ex.Message);
 				Console.ReadKey();
-				return;
+				throw;
 			}
 
 			Console.WriteLine("Extraction complete");
