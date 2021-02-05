@@ -1,0 +1,24 @@
+﻿<Window x:Class="TexToolsModExtractorGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TexToolsModExtractorGUI"
+        mc:Ignorable="d"
+        Title="TexTools Mod Extractor" Height="350" Width="500">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBox x:Name="PathBox"  Text="Mod path..." VerticalAlignment="Center" Margin="12"/>
+		<Button Grid.Column="1" Content="..." Width="35" Height="18" Margin="0 12 12 12" Click="OnBrowseClick"></Button>
+		<Button Grid.Row="1" Grid.ColumnSpan="2" Content="Extract" Margin="12" Click="OnExtractClick"></Button>
+	</Grid>
+</Window>
