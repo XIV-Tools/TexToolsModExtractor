@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿// © XIV-Tools.
+// Licensed under the MIT license.
+
+using System.Windows;
 using TexToolsModExtractor;
 using System.IO;
 using System.Windows.Forms;
