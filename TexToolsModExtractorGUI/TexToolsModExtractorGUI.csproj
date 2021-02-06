@@ -19,6 +19,7 @@
 
   <ItemGroup>
 	<ProjectReference Include="..\Extractor\TexToolsModExtractor.csproj" />
+	<ProjectReference Include="..\FfxivResourceConverter\FfxivResourceConverter.csproj" />
   </ItemGroup>
 
 </Project>

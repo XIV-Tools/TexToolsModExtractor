@@ -24,16 +24,22 @@ namespace TexToolsModExtractorCli
 
 			FileInfo inputModPack = new FileInfo(path);
 
-			string outputDirPath = Path.GetFileNameWithoutExtension(inputModPack.Name) + "_Extracted/";
-			DirectoryInfo outputDirectory = inputModPack.Directory.CreateSubdirectory(outputDirPath);
-			outputDirectory.Delete(true);
+			string outputDirPath = Path.GetFileNameWithoutExtension(inputModPack.Name) + "/";
+			DirectoryInfo outputDirectory = new DirectoryInfo(outputDirPath);
+
+			if (outputDirectory.Exists)
+				outputDirectory.Delete(true);
+
 			outputDirectory.Create();
 
 			List<FileInfo> files = Extractor.Extract(inputModPack, outputDirectory);
 
+			ConverterSettings settings = new ConverterSettings();
+			settings.TextureFormat = ConverterSettings.TextureFormats.Png;
+
 			foreach (FileInfo extractedFile in files)
 			{
-				ResourceConverter.Convert(extractedFile);
+				ResourceConverter.Convert(extractedFile, settings);
 			}
 
 			Console.WriteLine("Extraction complete");

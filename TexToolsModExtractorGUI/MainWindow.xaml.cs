@@ -34,12 +34,15 @@ namespace TexToolsModExtractorGUI
 
 		private void OnExtractClick(object sender, RoutedEventArgs e)
 		{
+			ConverterSettings settings = new ConverterSettings();
+			settings.TextureFormat = ConverterSettings.TextureFormats.Png;
+
 			FileInfo modPackFile = new FileInfo(this.PathBox.Text);
 			DirectoryInfo outputdirectory = new DirectoryInfo(this.OutputBox.Text);
 			List<FileInfo> files = Extractor.Extract(modPackFile, outputdirectory);
 			foreach (FileInfo extractedFile in files)
 			{
-				ResourceConverter.Convert(extractedFile);
+				ResourceConverter.Convert(extractedFile, settings);
 			}
 
 		}

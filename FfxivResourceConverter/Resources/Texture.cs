@@ -21,15 +21,19 @@ namespace FfxivResourceConverter
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
+	using SixLabors.ImageSharp;
+	using SixLabors.ImageSharp.Formats.Png;
+	using SixLabors.ImageSharp.PixelFormats;
 
 	public class Texture
 	{
 		private XivTexFormat textureFormat;
-		private uint width;
-		private uint height;
+		private int width;
+		private int height;
 		private int layers;
 		private uint mipMapCount;
-		private byte[] texData;
+		private byte[] rawData;
+		private byte[] pixelData;
 
 		public enum XivTexFormat
 		{
@@ -59,12 +63,13 @@ namespace FfxivResourceConverter
 
 			int signature = br.ReadInt32();
 			tex.textureFormat = (XivTexFormat)br.ReadInt32();
-			tex.width = (uint)br.ReadInt16();
-			tex.height = (uint)br.ReadInt16();
+			tex.width = br.ReadInt16();
+			tex.height = br.ReadInt16();
 			tex.layers = br.ReadInt16();
 			tex.mipMapCount = (uint)br.ReadInt16();
 			br.ReadBytes(64);
-			tex.texData = br.ReadBytes((int)br.BaseStream.Length - 80);
+			tex.rawData = br.ReadBytes((int)br.BaseStream.Length - 80);
+			tex.pixelData = tex.GetImageData();
 
 			return tex;
 		}
@@ -72,8 +77,8 @@ namespace FfxivResourceConverter
 		public void ToDDS(FileInfo file)
 		{
 			List<byte> dds = new List<byte>();
-			dds.AddRange(DDS.CreateDDSHeader(this.textureFormat, this.width, this.height, this.mipMapCount, this.layers));
-			byte[] data = this.texData;
+			dds.AddRange(DDS.CreateDDSHeader(this.textureFormat, (uint)this.width, (uint)this.height, this.mipMapCount, this.layers));
+			byte[] data = this.rawData;
 			if (this.textureFormat == XivTexFormat.A8R8G8B8 && this.layers > 1)
 			{
 				data = ShiftLayers(data);
@@ -83,6 +88,18 @@ namespace FfxivResourceConverter
 
 			string fileName = file.DirectoryName + "/" + Path.GetFileNameWithoutExtension(file.FullName) + ".dds";
 			File.WriteAllBytes(fileName, dds.ToArray());
+		}
+
+		public void ToPNG(FileInfo file)
+		{
+			string fileName = file.DirectoryName + "/" + Path.GetFileNameWithoutExtension(file.FullName) + ".png";
+
+			PngEncoder encoder = new PngEncoder();
+			encoder.BitDepth = PngBitDepth.Bit16;
+
+			Image img = Image.LoadPixelData<Rgba32>(this.pixelData, this.width, this.height);
+			img.Save(fileName, encoder);
+			img.Dispose();
 		}
 
 		// This is a simple shift of the layers around in order to convert ARGB to RGBA
@@ -102,6 +119,202 @@ namespace FfxivResourceConverter
 			}
 
 			return data;
+		}
+
+		/// <summary>
+		/// Creates bitmap from decompressed A4R4G4B4 texture data.
+		/// </summary>
+		/// <param name="textureData">The decompressed texture data.</param>
+		/// <param name="width">The textures width.</param>
+		/// <param name="height">The textures height.</param>
+		/// <returns>The raw byte data in 32bit</returns>
+		private static byte[] Read4444Image(byte[] textureData, int width, int height)
+		{
+			List<byte> convertedBytes = new List<byte>();
+
+			using MemoryStream ms = new MemoryStream(textureData);
+			using BinaryReader br = new BinaryReader(ms);
+
+			for (int y = 0; y < height; y++)
+			{
+				for (int x = 0; x < width; x++)
+				{
+					int pixel = br.ReadUInt16() & 0xFFFF;
+					int red = (pixel & 0xF) * 16;
+					int green = ((pixel & 0xF0) >> 4) * 16;
+					int blue = ((pixel & 0xF00) >> 8) * 16;
+					int alpha = ((pixel & 0xF000) >> 12) * 16;
+
+					convertedBytes.Add((byte)blue);
+					convertedBytes.Add((byte)green);
+					convertedBytes.Add((byte)red);
+					convertedBytes.Add((byte)alpha);
+				}
+			}
+
+			return convertedBytes.ToArray();
+		}
+
+		/// <summary>
+		/// Creates bitmap from decompressed A1R5G5B5 texture data.
+		/// </summary>
+		/// <param name="textureData">The decompressed texture data.</param>
+		/// <param name="width">The textures width.</param>
+		/// <param name="height">The textures height.</param>
+		/// <returns>The raw byte data in 32bit</returns>
+		private static byte[] Read5551Image(byte[] textureData, int width, int height)
+		{
+			List<byte> convertedBytes = new List<byte>();
+
+			using MemoryStream ms = new MemoryStream(textureData);
+			using BinaryReader br = new BinaryReader(ms);
+
+			for (int y = 0; y < height; y++)
+			{
+				for (int x = 0; x < width; x++)
+				{
+					int pixel = br.ReadUInt16() & 0xFFFF;
+
+					int red = ((pixel & 0x7E00) >> 10) * 8;
+					int green = ((pixel & 0x3E0) >> 5) * 8;
+					int blue = (pixel & 0x1F) * 8;
+					int alpha = ((pixel & 0x8000) >> 15) * 255;
+
+					convertedBytes.Add((byte)red);
+					convertedBytes.Add((byte)green);
+					convertedBytes.Add((byte)blue);
+					convertedBytes.Add((byte)alpha);
+				}
+			}
+
+			return convertedBytes.ToArray();
+		}
+
+		/// <summary>
+		/// Creates bitmap from decompressed A8/L8 texture data.
+		/// </summary>
+		/// <param name="textureData">The decompressed texture data.</param>
+		/// <param name="width">The textures width.</param>
+		/// <param name="height">The textures height.</param>
+		/// <returns>The created bitmap.</returns>
+		private static byte[] Read8bitImage(byte[] textureData, int width, int height)
+		{
+			List<byte> convertedBytes = new List<byte>();
+
+			using MemoryStream ms = new MemoryStream(textureData);
+			using BinaryReader br = new BinaryReader(ms);
+
+			for (int y = 0; y < height; y++)
+			{
+				for (int x = 0; x < width; x++)
+				{
+					int pixel = br.ReadByte() & 0xFF;
+
+					convertedBytes.Add((byte)pixel);
+					convertedBytes.Add((byte)pixel);
+					convertedBytes.Add((byte)pixel);
+					convertedBytes.Add(255);
+				}
+			}
+
+			return convertedBytes.ToArray();
+		}
+
+		/// <summary>
+		/// Creates bitmap from decompressed Linear texture data.
+		/// </summary>
+		/// <param name="textureData">The decompressed texture data.</param>
+		/// <param name="width">The textures width.</param>
+		/// <param name="height">The textures height.</param>
+		/// <returns>The raw byte data in 32bit</returns>
+		private static byte[] SwapRBColors(byte[] textureData, int width, int height)
+		{
+			List<byte> convertedBytes = new List<byte>();
+
+			using MemoryStream ms = new MemoryStream(textureData);
+			using BinaryReader br = new BinaryReader(ms);
+
+			for (int y = 0; y < height; y++)
+			{
+				for (int x = 0; x < width; x++)
+				{
+					byte red = br.ReadByte();
+					byte green = br.ReadByte();
+					byte blue = br.ReadByte();
+					byte alpha = br.ReadByte();
+
+					convertedBytes.Add(blue);
+					convertedBytes.Add(green);
+					convertedBytes.Add(red);
+					convertedBytes.Add(alpha);
+				}
+			}
+
+			return convertedBytes.ToArray();
+		}
+
+		/// <summary>
+		/// Gets the raw pixel data for the texture.
+		/// </summary>
+		/// <returns>A byte array with the image data.</returns>
+		private byte[] GetImageData(int layer = -1)
+		{
+			byte[] imageData = null;
+
+			int layers = this.layers;
+			if (layers == 0)
+			{
+				layers = 1;
+			}
+
+			switch (this.textureFormat)
+			{
+				case XivTexFormat.DXT1:
+					imageData = DxtUtil.DecompressDxt1(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.DXT3:
+					imageData = DxtUtil.DecompressDxt3(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.DXT5:
+					imageData = DxtUtil.DecompressDxt5(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.A4R4G4B4:
+					imageData = Read4444Image(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.A1R5G5B5:
+					imageData = Read5551Image(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.A8R8G8B8:
+					imageData = SwapRBColors(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.L8:
+				case XivTexFormat.A8:
+					imageData = Read8bitImage(this.rawData, this.width, this.height * layers);
+					break;
+				case XivTexFormat.X8R8G8B8:
+				case XivTexFormat.R32F:
+				case XivTexFormat.G16R16F:
+				case XivTexFormat.G32R32F:
+				case XivTexFormat.A16B16G16R16F:
+				case XivTexFormat.A32B32G32R32F:
+				case XivTexFormat.D16:
+				default:
+					imageData = this.rawData;
+					break;
+			}
+
+			if (layer >= 0)
+			{
+				int bytesPerLayer = imageData.Length / this.layers;
+				int offset = bytesPerLayer * layer;
+
+				byte[] nData = new byte[bytesPerLayer];
+				Array.Copy(imageData, offset, nData, 0, bytesPerLayer);
+
+				imageData = nData;
+			}
+
+			return imageData;
 		}
 	}
 }
