@@ -17,10 +17,10 @@ namespace FfxivResourceConverter
 				Texture tex = Texture.FromTex(file);
 
 				if (settings.TextureFormat.HasFlag(ConverterSettings.TextureFormats.Dds))
-					tex.ToDDS(file);
+					tex.ToDDS(file, settings);
 
 				if (settings.TextureFormat.HasFlag(ConverterSettings.TextureFormats.Png))
-					tex.ToPNG(file);
+					tex.ToPNG(file, settings);
 
 				return true;
 			}
@@ -28,7 +28,7 @@ namespace FfxivResourceConverter
 			{
 				Console.WriteLine("Converting: " + file.Name);
 				Material mat = Material.FromMtrl(file);
-				mat.ToJson(file, settings.JsonSettings);
+				mat.ToJson(file, settings);
 
 				return true;
 			}

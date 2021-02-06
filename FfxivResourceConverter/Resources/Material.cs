@@ -220,9 +220,9 @@ namespace FfxivResourceConverter.Resources
 			return MaterialMtrl.FromMtrl(file);
 		}
 
-		public void ToJson(FileInfo file, JsonSerializerSettings settings)
+		public void ToJson(FileInfo file, ConverterSettings settings)
 		{
-			string json = JsonConvert.SerializeObject(this, settings);
+			string json = JsonConvert.SerializeObject(this, settings.JsonSettings);
 
 			string fileName = file.DirectoryName + "/" + Path.GetFileNameWithoutExtension(file.FullName) + ".json";
 			File.WriteAllText(fileName, json);

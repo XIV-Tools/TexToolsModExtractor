@@ -10,6 +10,7 @@ namespace TexToolsModExtractor.Extractors
 	using System.Linq;
 	using Lumina.Data;
 	using Newtonsoft.Json;
+	using TexToolsModExtractor.Metadatas;
 	using xivModdingFramework.Mods.DataContainers;
 
 	internal class TexToolsModPack2Extractor : ExtractorBase
@@ -45,7 +46,7 @@ namespace TexToolsModExtractor.Extractors
 				{
 					foreach (ModsJson mods in modPack.SimpleModsList)
 					{
-						extractedFiles.Add(this.Extract(mods, pack, outputDirectory));
+						extractedFiles.AddRange(this.Extract(mods, pack, outputDirectory));
 					}
 				}
 
@@ -61,7 +62,7 @@ namespace TexToolsModExtractor.Extractors
 								{
 									string directoryName = page.PageIndex.ToString() + "_" + group.GroupName + "_" + option.Name;
 									DirectoryInfo dir = outputDirectory.CreateSubdirectory(directoryName);
-									extractedFiles.Add(this.Extract(mods, pack, dir));
+									extractedFiles.AddRange(this.Extract(mods, pack, dir));
 								}
 							}
 						}
@@ -77,7 +78,7 @@ namespace TexToolsModExtractor.Extractors
 			return extractedFiles;
 		}
 
-		private FileInfo Extract(ModsJson mods, SqPackStream pack, DirectoryInfo outputDirectory)
+		private List<FileInfo> Extract(ModsJson mods, SqPackStream pack, DirectoryInfo outputDirectory)
 		{
 			Console.WriteLine(" > " + mods.FullPath);
 			FileResource dat = pack.ReadFile<FileResource>(mods.ModOffset);
@@ -89,8 +90,12 @@ namespace TexToolsModExtractor.Extractors
 
 			dat.SaveFile(fileInfo.FullName);
 
-			////File.WriteAllBytes(fileInfo.FullName, dat.Data);
-			return fileInfo;
+			if (fileInfo.Extension == ".meta")
+			{
+				return Metadata.Expand(fileInfo);
+			}
+
+			return new List<FileInfo>() { fileInfo };
 		}
 	}
 }

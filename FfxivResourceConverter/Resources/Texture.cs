@@ -74,7 +74,7 @@ namespace FfxivResourceConverter.Resources
 			return tex;
 		}
 
-		public void ToDDS(FileInfo file)
+		public void ToDDS(FileInfo file, ConverterSettings settings)
 		{
 			List<byte> dds = new List<byte>();
 			dds.AddRange(DDS.CreateDDSHeader(this.textureFormat, (uint)this.width, (uint)this.height, this.mipMapCount, this.layers));
@@ -90,7 +90,7 @@ namespace FfxivResourceConverter.Resources
 			File.WriteAllBytes(fileName, dds.ToArray());
 		}
 
-		public void ToPNG(FileInfo file)
+		public void ToPNG(FileInfo file, ConverterSettings settings)
 		{
 			string fileName = file.DirectoryName + "/" + Path.GetFileNameWithoutExtension(file.FullName) + ".png";
 
