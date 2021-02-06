@@ -21,6 +21,7 @@ namespace FfxivResourceConverter
 	using System;
 	using System.Collections.Generic;
 	using System.Text;
+	using FfxivResourceConverter.Resources;
 
 	public static class DDS
 	{

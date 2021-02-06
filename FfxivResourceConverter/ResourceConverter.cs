@@ -5,6 +5,7 @@ namespace FfxivResourceConverter
 {
 	using System;
 	using System.IO;
+	using FfxivResourceConverter.Resources;
 
 	public static class ResourceConverter
 	{
@@ -20,6 +21,14 @@ namespace FfxivResourceConverter
 
 				if (settings.TextureFormat.HasFlag(ConverterSettings.TextureFormats.Png))
 					tex.ToPNG(file);
+
+				return true;
+			}
+			else if (file.Extension == ".mtrl")
+			{
+				Console.WriteLine("Converting: " + file.Name);
+				Material mat = Material.FromMtrl(file);
+				mat.ToJson(file, settings.JsonSettings);
 
 				return true;
 			}

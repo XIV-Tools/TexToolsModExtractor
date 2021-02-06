@@ -16,7 +16,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-namespace FfxivResourceConverter
+namespace FfxivResourceConverter.Resources
 {
 	using System;
 	using System.Collections.Generic;
@@ -127,7 +127,7 @@ namespace FfxivResourceConverter
 		/// <param name="textureData">The decompressed texture data.</param>
 		/// <param name="width">The textures width.</param>
 		/// <param name="height">The textures height.</param>
-		/// <returns>The raw byte data in 32bit</returns>
+		/// <returns>The raw byte data in 32bit.</returns>
 		private static byte[] Read4444Image(byte[] textureData, int width, int height)
 		{
 			List<byte> convertedBytes = new List<byte>();
@@ -161,7 +161,7 @@ namespace FfxivResourceConverter
 		/// <param name="textureData">The decompressed texture data.</param>
 		/// <param name="width">The textures width.</param>
 		/// <param name="height">The textures height.</param>
-		/// <returns>The raw byte data in 32bit</returns>
+		/// <returns>The raw byte data in 32bit.</returns>
 		private static byte[] Read5551Image(byte[] textureData, int width, int height)
 		{
 			List<byte> convertedBytes = new List<byte>();
@@ -226,7 +226,7 @@ namespace FfxivResourceConverter
 		/// <param name="textureData">The decompressed texture data.</param>
 		/// <param name="width">The textures width.</param>
 		/// <param name="height">The textures height.</param>
-		/// <returns>The raw byte data in 32bit</returns>
+		/// <returns>The raw byte data in 32bit.</returns>
 		private static byte[] SwapRBColors(byte[] textureData, int width, int height)
 		{
 			List<byte> convertedBytes = new List<byte>();
