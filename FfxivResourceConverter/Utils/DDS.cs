@@ -27,7 +27,7 @@ namespace FfxivResourceConverter
 	{
 		/// <summary>
 		/// Creates the DDS header for given texture data.
-		/// <see cref="https://msdn.microsoft.com/en-us/library/windows/desktop/bb943982(v=vs.85).aspx"/>.
+		/// <see href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb943982(v=vs.85).aspx"/>.
 		/// </summary>
 		/// <returns>Byte array containing DDS header.</returns>
 		public static byte[] CreateDDSHeader(Texture.XivTexFormat format, uint dwWidth, uint dwHeight, uint dwMipMapCount, int layers)

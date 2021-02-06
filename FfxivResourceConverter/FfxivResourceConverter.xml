@@ -1,0 +1,1612 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FfxivResourceConverter</name>
+    </assembly>
+    <members>
+        <member name="P:FfxivResourceConverter.Resources.Imc.MaterialSet">
+            <summary>
+            Gets or sets the Material Set / Variant #.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Imc.Decal">
+            <summary>
+            Gets or sets unknown byte next to the Variant.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Imc.Mask">
+            <summary>
+            Gets or sets the IMC mask data.
+            </summary>
+            <remarks>
+            This is used with a models mesh part mask data
+            It is used to determine what parts of the mesh are hidden.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Imc.Vfx">
+            <summary>
+            Gets or sets the IMC VFX data.
+            </summary>
+            <remarks>
+            Only a few items have VFX data associated with them
+            Some examples would be any of the Lux weapons.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Imc.Animation">
+            <summary>
+            Gets or sets material animation byte.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.Signature">
+            <summary>
+            Gets or sets the MTRL file signature.
+            </summary>
+            <remarks>
+            0x00000301 (16973824).
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.FileSize">
+            <summary>
+            Gets or sets the size of the MTRL file.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.MaterialDataSize">
+            <summary>
+            Gets or sets the size of the Material Data section.
+            </summary>
+            <remarks>
+            This is the size of the data chunk containing all of the path and filename strings.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TexturePathsDataSize">
+            <summary>
+            Gets or sets the size of the Texture Path Data section.
+            </summary>
+            <remarks>
+            This is the size of the data chucnk containing only the texture paths.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TextureCount">
+            <summary>
+            Gets or sets the number of textures paths in the mtrl.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.MapCount">
+            <summary>
+            Gets or sets the number of map paths in the mtrl.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetCount">
+            <summary>
+            Gets or sets the amount of color sets in the mtrl.
+            </summary>
+            <remarks>
+            It is not known if there are any instances where this is greater than 1.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.UnknownDataSize">
+            <summary>
+            Gets or sets the number of bytes to skip after path section.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TexturePathOffsetList">
+            <summary>
+            Gets or sets a list containing the Texture Path offsets.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TexturePathUnknownList">
+            <summary>
+            Gets or sets a list containing the Texture Path Unknowns.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.MapPathOffsetList">
+            <summary>
+            Gets or sets a list containing the Map Path offsets.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.MapPathUnknownList">
+            <summary>
+            Gets or sets a list containing the Map Path Unknowns.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetPathOffsetList">
+            <summary>
+            Gets or sets a list containing the ColorSet Path offsets.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetPathUnknownList">
+            <summary>
+            Gets or sets a list containing the ColorSet Path Unknowns.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TexturePathList">
+            <summary>
+            Gets or sets a list containing the Texture Path strings.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.MapPathList">
+            <summary>
+            Gets or sets a list containing the Map Path strings.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetPathList">
+            <summary>
+            Gets or sets a list containing the ColorSet Path strings.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.Shader">
+            <summary>
+            Gets or sets the name of the shader used by the item.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetData">
+            <summary>
+            Gets or sets the list of half floats containing the ColorSet data.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetDyeData">
+            <summary>
+            Gets or sets the byte array containing the extra ColorSet data.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ShaderNumber">
+            <summary>
+            Gets or sets the shader number used by the item.
+            </summary>
+            <remarks>
+            This is a guess and has not been tested to be true
+            Seems to be more likely that this is some base argument passed into the shader.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TextureUsageList">
+            <summary>
+            Gets or sets the list of Type 1 data structures.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ShaderParameterList">
+            <summary>
+            Gets or sets the list of Type 2 data structures.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TextureDescriptorList">
+            <summary>
+            Gets or sets the list of Parameter data structures.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TextureUsageCount">
+            <summary>
+            Gets the number of type 1 data sturctures.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ShaderParameterCount">
+            <summary>
+            Gets the number of type 2 data structures.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.TextureDescriptorCount">
+            <summary>
+            Gets the number of parameter stuctures.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ColorSetDataSize">
+            <summary>
+            Gets the size of the ColorSet Data section.
+            </summary>
+            <remarks>
+            Can be 0 if there is no ColorSet Data.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Material.ShaderParameterDataSize">
+            <summary>
+            Gets the size of the additional MTRL Data.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Materials.ShaderParameterStruct">
+            <summary>
+            This class containst he information for the shader parameters at the end the MTRL File.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Materials.ShaderParameterStruct.MtrlShaderParameterId">
+            <summary>
+            Enums for the various shader parameter Ids.  These likely are used to pipe extra data from elsewhere into the shader.
+            Ex. Local Reflection Maps, Character Skin/Hair Color, Dye Color, etc.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Materials.TextureDescriptorStruct">
+            <summary>
+            This class contains the information for MTRL texture parameters.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Materials.TextureUsageStruct">
+            <summary>
+            This class contains the information for the texture usage structs in MTRL data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.PathData">
+            <summary>
+            The path data contained in the mdl file.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.ModelData">
+            <summary>
+            The model data contained in the mdl file.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.UnkData0">
+            <summary>
+            Currently unknown data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.LoDList">
+            <summary>
+            The list containing the info for each Level of Detail of the model.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.AttrDataBlock">
+            <summary>
+            The data block containing attribute information.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.UnkData1">
+            <summary>
+            Currently unknown data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.UnkData2">
+            <summary>
+            Currently unknown data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.MatDataBlock">
+            <summary>
+            The data block containing material information.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.BoneDataBlock">
+            <summary>
+            The data block containing bone information.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.MeshBoneSets">
+            <summary>
+            The list continaing each of the Bone Index Lists for each LoD.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.MeshShapeData">
+            <summary>
+            The data containing the information for mesh shapes.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.PartBoneSets">
+            <summary>
+            The data containing the information for the bone indices used by mesh parts.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.PaddingSize">
+            <summary>
+            The size of the padded bytes immediately following.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.PaddedBytes">
+            <summary>
+            The padded bytes.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.BoundBox">
+            <summary>
+            The bounding box information for the model.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.BoneTransformDataList">
+            <summary>
+            The list containing the transform data for each bone.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.HasShapeData">
+            <summary>
+            Flag set when the model has shape data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.ExtraLoDList">
+            <summary>
+            The list containing the info for each etra Level of Detail of the model.
+            </summary>
+            <remarks>
+            This happens when the sum of all LoD mesh counts is less than the model data mesh count.
+            The number of extra LoDs seems to be the value of Unknown10.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Model.ExtraMeshData">
+            <summary>
+            The list of extra MeshData for the Model.
+            </summary>
+            <remarks>
+            This happens when the sum of all LoD mesh counts is less than the model data mesh count.
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Model.Partless">
+            <summary>
+            Gets a value indicating whether special indicator that says the mesh does not use parts at all.
+            This is the case for some furniture/background models.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.AttributeDataBlock.AttributePathOffsetList">
+            <summary>
+            This data block contains the offsets to each attribute path within the data block.
+            </summary>
+            <remarks>
+            The data block consists of offsets with an int data type (4 bytes each).
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.BoneDataBlock.BonePathOffsetList">
+            <summary>
+            This data block contains the offsets to each bone path within the data block.
+            </summary>
+            <remarks>
+            The data block consists of offsets with an int data type (4 bytes each).
+            </remarks>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.BoneTransformData">
+            <summary>
+            Data for some sort of transform on bones.
+            </summary>
+            <remarks>
+            The number of transforms is [ Bone Count ].
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.BoneTransformData.Transform0">
+            <summary>
+            The first Transform value.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.BoneTransformData.Transform1">
+            <summary>
+            The second transform value.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.BoundingBox">
+            <summary>
+            This class contains the properties for the Bounding Box of the model.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.BoundingBox.PointList">
+            <summary>
+            The list of point floats used by the bounding box.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.LevelOfDetail">
+            <summary>
+            This class contains properties for the Level of Detail data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.MeshOffset">
+            <summary>
+            The offset to the mesh data block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.MeshCount">
+            <summary>
+            The number of meshes to use.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown0">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown1">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.MeshEnd">
+            <summary>
+            Mesh End.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.ExtraMeshCount">
+            <summary>
+            Extra Mesh Count.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.MeshSum">
+            <summary>
+            Mesh Sum.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown2">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown3">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown4">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown5">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.IndexDataStart">
+            <summary>
+            The offset at which the index data begins.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown6">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.Unknown7">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.VertexDataSize">
+            <summary>
+            The size of the Vertex Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.IndexDataSize">
+            <summary>
+            The size of the Index Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.VertexDataOffset">
+            <summary>
+            The offset to the Vertex Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.IndexDataOffset">
+            <summary>
+            The offset to the Index Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.LevelOfDetail.MeshDataList">
+            <summary>
+            The list of MeshData for the LoD.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MaterialDataBlock.MaterialPathOffsetList">
+            <summary>
+            This data block contains the offsets to each material path within the data block.
+            </summary>
+            <remarks>
+            The data block consists of offsets with an int data type (4 bytes each).
+            </remarks>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.MdlPathData">
+            <summary>
+            This class contains the properties for the MDL files path data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.PathCount">
+            <summary>
+            The number of paths contained in the Path Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.PathBlockSize">
+            <summary>
+            The size of the Path Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.AttributeList">
+            <summary>
+            The list of attribute strings.
+            </summary>
+            <remarks>
+            These will usually begin with 'atr_'.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.BoneList">
+            <summary>
+            The list of bone strings.
+            </summary>
+            <remarks>
+            These will usually begin with 'j_'.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.MaterialList">
+            <summary>
+            The list of material strings.
+            </summary>
+            <remarks>
+            These are references to the MTRL files used by the model.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.ShapeList">
+            <summary>
+            The list of shape strings.
+            </summary>
+            <remarks>
+            These will usually begin with shp_.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MdlPathData.ExtraPathList">
+            <summary>
+            The list of extra path strings.
+            </summary>
+            <remarks>
+            These are extra paths contained in the mdl path data.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshData.MeshInfo">
+            <summary>
+            The information for the mesh data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshData.MeshPartList">
+            <summary>
+            The list of parts for the mesh.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshData.VertexDataStructList">
+            <summary>
+            The list of vertex data structures for the mesh.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshData.VertexData">
+            <summary>
+            The vertex data for the mesh.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshData.IsBody">
+            <summary>
+            Determines whether this mesh contains a body material.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshData.ShapePathList">
+            <summary>
+            A list of the shape paths associated with this mesh.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.MeshDataInfo">
+            <summary>
+            This class contains the properties of the Mesh Data Information.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexCount">
+            <summary>
+            The number of vertices the mesh contains.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.IndexCount">
+            <summary>
+            The number of indcies the mesh contains.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.MaterialIndex">
+            <summary>
+            The index of the material used by the mesh.
+            </summary>
+            <remarks>
+            This is the index of the material in the MaterialList from MdlPathData.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.MeshPartIndex">
+            <summary>
+            The index of the Mesh Part to start at.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.MeshPartCount">
+            <summary>
+            The number of Parts the mesh contains.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.BoneSetIndex">
+            <summary>
+            The index of the Bone List to use for the mesh.
+            </summary>
+            <remarks>
+            This is the index of the bone list in the BoneDataList.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.IndexDataOffset">
+            <summary>
+            The offset to the Index Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataOffset0">
+            <summary>
+            The offset to the first Vertex Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataOffset1">
+            <summary>
+            The offset to the second Vertex Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataOffset2">
+            <summary>
+            The offset to the Third Vertex Data Block.
+            </summary>
+            <remarks>
+            This value is usually blank.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataEntrySize0">
+            <summary>
+            The size of each individual Vertex Data Entry in the first Vertex Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataEntrySize1">
+            <summary>
+            The size of each individual Vertex Data Entry in the second Vertex Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataEntrySize2">
+            <summary>
+            The size of each individual Vertex Data Entry in the third Vertex Data Block.
+            </summary>
+            <remarks>
+            This value is usually blank.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshDataInfo.VertexDataBlockCount">
+            <summary>
+            The number of vertex data blocks for the mesh.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.MeshPart">
+            <summary>
+            This class contins the properties for the Parts for a Mesh.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshPart.IndexOffset">
+            <summary>
+            The offset to the start index in the Index Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshPart.IndexCount">
+            <summary>
+            The number of indices the mesh part contains.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshPart.AttributeBitmask">
+            <summary>
+            The index to the attribute used by the mesh part.
+            </summary>
+            <remarks>
+            This is the index to the value in MdlPathData.AttributeList.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshPart.BoneStartOffset">
+            <summary>
+            The offset to the starting bone in the BoneList.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.MeshPart.BoneCount">
+            <summary>
+            The number of bones to use from the bone list beginning at the BoneStartOffset.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeInfoList">
+            <summary>
+            The list of shapes in the mesh(?).  1:1 With shape strings.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeParts">
+            <summary>
+            The shape parts.  Each full shape is composed of
+            Shape -> [Lods] -> [Parts for those Lods].
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeDataList">
+            <summary>
+            The Raw shape index list.  This is formatted as
+            [Base Index To Replace] -> [New Vertex to point to].
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ShapeData.AssignMeshAndLodNumbers(System.Collections.Generic.List{System.Collections.Generic.List{System.Int32}})">
+             <summary>
+             Regenerates all the Mesh/Lod Numbers for the ShapeParts
+             based on the index offsets and other information.
+            
+             Kind of computationally expensive, so this is only done once
+             and then cached in the shape parts themselves.
+             </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ShapeData.GetShapeData(FfxivResourceConverter.Resources.Models.ShapeData.ShapePart)">
+            <summary>
+            Retrieves the shape data for a given part.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeInfo.ShapeNameOffset">
+            <summary>
+            Offset in the string block to the actual textual name.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeInfo.Name">
+            <summary>
+            The textual name of the shape.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeInfo.ShapeLods">
+            <summary>
+            The list of part divisions within each LoD for this Shape.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapePart.MeshIndexOffset">
+            <summary>
+            This should match a Index Data Offset in MeshDataInfo.IndexDataOffset.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapePart.IndexCount">
+            <summary>
+            The number of indices to read from the Shape Data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapePart.ShapeDataOffset">
+            <summary>
+            The offset to the index in the Shape Data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapePart.LodLevel">
+            <summary>
+            Lod Level this part is associated with.
+            Derived from ShapeData.ShapeInfoList.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapePart.MeshNumber">
+            <summary>
+            Mesh Number this part is associated with.
+            Derived from MeshIndexOffset.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapePart.ShapeName">
+            <summary>
+            The parent Shape Name that owns this part.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeDataEntry.BaseIndex">
+            <summary>
+            The Triangle Index that will be changed.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeDataEntry.ShapeVertex">
+            <summary>
+            Vertex # the Triangle Index should point to when the shape data is active.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeLodInfo.PartOffset">
+            <summary>
+            Offset where.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.ShapeData.ShapeLodInfo.PartCount">
+            <summary>
+            The number of parts in the Shape Data Information.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.SkeletonData">
+            <summary>
+            This class contains properties for the model skeleton.
+            </summary>
+            <remarks>
+            The model skeleton is kept separate from the mdl file and is usually in
+            the chara/human/[raceID]/skeleton/base/[bodyID] folder, it is a Havok file.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.SkeletonData.BoneName">
+            <summary>
+            The Name of the bone.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.SkeletonData.BoneNumber">
+            <summary>
+            The bone number.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.SkeletonData.BoneParent">
+            <summary>
+            The bone parent.
+            </summary>
+            <remarks>
+            The base bone that has no parent will have a value of -1.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.SkeletonData.PoseMatrix">
+            <summary>
+            The Pose Matrix for the bone.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.SkeletonData.InversePoseMatrix">
+            <summary>
+            The Inverse Pose Matrix for the bone.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.ModelModifiers">
+            <summary>
+            List of modifier functions to TTModel Objects.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.AutoScaleModel(FfxivResourceConverter.Resources.Models.TTModel,FfxivResourceConverter.Resources.Models.TTModel,System.Double,System.Action{System.Boolean,System.String})">
+            <summary>
+            Automatically rescales the model to correct for unit scaling errors based on comparison of size to the original model.
+            </summary>
+            <param name="ttModel"></param>
+            <param name="originalModel"></param>
+            <param name="tolerance"></param>
+            <param name="loggingFunction"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.MatrixTransform(SharpDX.Vector3,SharpDX.Matrix)">
+            <summary>
+            This takes a standard Affine Transformation matrix [0,0,0,1 on bottom], and a vector, and applies the transformation to it.
+            Treating the vector as a [1x4] Column, with [1] in the last entry.  This function is necessary because SharpDX implementation
+            of transforms assumes your affine matrices are set up with translation on the bottom(and vectors as rows), not the right(and vectors as columns).
+            </summary>
+            <param name="vector"></param>
+            <param name="transform"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.Normalize(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Normalizes a byte array to sum to 255 (minus rounding errors)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.MakeImportReady(FfxivResourceConverter.Resources.Models.TTModel,System.Action{System.Boolean,System.String},System.Boolean)">
+            <summary>
+            This function does all the minor adjustments to a Model that makes it
+            ready for injection into the SE filesystem.  Such as flipping the 
+            UVs, calculating tangents, and applying the global level size multiplier.
+            Likewise, MakeExportReady() undoes this process.
+            
+            Weight check skip lets us avoid some calculation in cases where we already know they're fine.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.MakeExportReady(FfxivResourceConverter.Resources.Models.TTModel,System.Action{System.Boolean,System.String})">
+            <summary>
+            This process undoes all the strange minor adjustments to a model
+            that FFXIV expects in the SE filesystem, such as flipping the UVs,
+            and having tiny ass models.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.CalculateTangents(FfxivResourceConverter.Resources.Models.TTModel,System.Action{System.Boolean,System.String},System.Boolean)">
+            <summary>
+            Convenience function for calculating tangent data for a TTModel.
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.CalculateTangentsFromBinormals(FfxivResourceConverter.Resources.Models.TTModel,System.Action{System.Boolean,System.String})">
+            <summary>
+            Calculates the tangent data, assuming we already have the binormal data available.
+            </summary>
+            <param name="normals"></param>
+            <param name="binormals"></param>
+            <param name="handedness"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.ApplyShapes(FfxivResourceConverter.Resources.Models.TTModel,System.Collections.Generic.List{System.String},System.Boolean,System.Action{System.Boolean,System.String})">
+            <summary>
+            Applies a given set of shapes in order to the model.
+            Starting clean will start from the original base model.  Setting startClean to false will continue
+            applying shapes to the current already shape-deformed model.
+            </summary>
+            <param name="model"></param>
+            <param name="shapes"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.ModelModifiers.NoOp(System.Boolean,System.String)">
+            <summary>
+            /dev/null function used when no logging parameter is supplied, 
+            just to make sure we don't have to constantly null-check the logging functions.
+            </summary>
+            <param name="warning"></param>
+            <param name="message"></param>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTMeshGroup">
+            <summary>
+            Class representing a mesh group in TexTools
+            At the FFXIV level, all the parts are crushed down together into one
+            Singular 'Mesh'.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTMeshGroup.Material">
+            <summary>
+            Material used by this Mesh Group.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTMeshGroup.Name">
+            <summary>
+            Purely semantic.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTMeshGroup.Bones">
+            <summary>
+            List of bones used by this mesh group's vertices.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.SetIndexAt(System.Int32,System.Int32)">
+            <summary>
+            Set an index by its MESH RELEVANT index ID and vertex ID.
+            </summary>
+            <param name="indexId"></param>
+            <param name="vertexIdToSet"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.SetVertexAt(System.Int32,FfxivResourceConverter.Resources.Models.TTVertex)">
+            <summary>
+            Set a vertex by its MESH RELEVANT vertex id.
+            </summary>
+            <param name="vertex"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.GetPartRelevantVertexInformation(System.Int32)">
+            <summary>
+            Retrieves all the part information for a given Mesh-Relevant vertex Id.
+            </summary>
+            <param name="vertexId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.GetOwningPartIdByIndex(System.Int32)">
+            <summary>
+            Gets the part id of the part which owns a given triangle index.
+            </summary>
+            <param name="meshRelevantTriangleIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.GetOwningPartIdByVertex(System.Int32)">
+            <summary>
+            Gets the part id of the part which owns a given vertex.
+            </summary>
+            <param name="meshRelevantTriangleIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.GetVertexAt(System.Int32)">
+            <summary>
+            Accessor for the full unified MeshGroup level Vertex list.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.GetIndexAt(System.Int32)">
+            <summary>
+            Accessor for the full unified MeshGroup level Index list
+            Also corrects the resultant Index to point to the MeshGroup level Vertex list.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshGroup.UpdateShapeData">
+            <summary>
+            Updates all shapes in this mesh group to any updated UV/Normal/etc. data from the base model.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTMeshGroup.PartIndexOffsets">
+            <summary>
+            When stacked together, this is the list of points which the Triangle Index pointer would start for each part.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTMeshGroup.PartVertexOffsets">
+            <summary>
+            When stacked together, this is the list of points which the Vertex pointer would start for each part.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTMeshPart">
+            <summary>
+            Class representing the base infromation for a Mesh Part, unrelated
+            to the Item or anything else above the level of the base 3D model.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTMeshPart.UpdateShapeData">
+            <summary>
+            Updates all shapes in this part to any updated UV/Normal/etc. data from the base model.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTModel">
+            <summary>
+            Class representing the base information for a 3D Model, unrelated to the 
+            item or anything else that it's associated with.  This should be writeable
+            into the FFXIV file system with some calculation, but is primarly a class
+            for I/O with importers/exporters, and should not contain information like
+            padding bytes or unknown bytes unless this is data the end user can 
+            manipulate to some effect.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTModel.Source">
+            <summary>
+            The internal or external file path where this TTModel originated from.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTModel.MeshGroups">
+            <summary>
+            The Mesh groups and parts of this mesh.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTModel.XivRace">
+            <summary>
+            Enum containing all known races
+            </summary>
+            <remarks>
+            Some of the NPC races don't seem to be present anywhere
+            They were added to the list in case they are ever used in the future
+            </remarks>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.IsInternal">
+            <summary>
+            Is this TTModel populated from an internal file, or external?
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.Bones">
+            <summary>
+            Readonly list of bones that are used in this model.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.Materials">
+            <summary>
+            Readonly list of Materials used in this model.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.Attributes">
+            <summary>
+            Readonly list of attributes used by this model.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.HasShapeData">
+            <summary>
+            Whether or not to write Shape data to the resulting MDL.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.ShapeNames">
+            <summary>
+            List of all shape names used in the model.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.ShapePartCount">
+            <summary>
+            Total # of Shape Parts
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.ShapeDataCount">
+            <summary>
+            Total Shape Data (Index) Entries
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.ShapePartCounts">
+            <summary>
+            Per-Shape sum of parts; matches up by index to ShapeNames.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.GetRawShapeParts">
+            <summary>
+            Gets all the raw shape data of the mesh for use with importing the data back into FFXIV's file system.
+            Calling/building this data is somewhat expensive, and should only be done
+            if actually needed in this specified format.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.HasWeights">
+            <summary>
+            Whether or not this Model actually has animation/weight data.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.VertexCount">
+            <summary>
+            Sum count of Vertices in this model.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModel.IndexCount">
+            <summary>
+            Sum count of Indices in this model.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.GetBoneSet(System.Int32)">
+            <summary>
+            Creates a bone set from the model and group information.
+            </summary>
+            <param name="PartNumber"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.ReplaceBytesAt(System.Collections.Generic.List{System.Byte},System.Byte[],System.Int32)">
+            <summary>
+            Replaces the bytes in a given byte array with the bytes from another array, starting at the given index of the original array.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.GetMaterialIndex(System.Int32)">
+            <summary>
+            Gets the material index for a given group, based on model and group information.
+            </summary>
+            <param name="groupNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.GetAttributeBitmask(System.Int32,System.Int32)">
+            <summary>
+            Retrieves the bitmask value for a part's attributes, based on part and model settings.
+            </summary>
+            <param name="groupNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.UpdateShapeData">
+            <summary>
+            Updates all shapes in this model to any updated UV/Normal/etc. data from the base model.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.SanityCheck(FfxivResourceConverter.Resources.Models.TTModel,System.Action{System.Boolean,System.String})">
+            <summary>
+            Performs a basic sanity check on an incoming TTModel
+            Returns true if there were no errors or errors that were resolvable.
+            Returns false if the model was deemed insane.
+            </summary>
+            <param name="model"></param>
+            <param name="loggingFunction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModel.CheckCommonUserErrors(FfxivResourceConverter.Resources.Models.TTModel,System.Action{System.Boolean,System.String})">
+            <summary>
+            Checks the model for common valid-but-unusual states that users often end up in by accident, providing 
+            a warning message for each one, if the conditions are met.
+            </summary>
+            <param name="model"></param>
+            <param name="loggingFunction"></param>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModelDb.ToDb(FfxivResourceConverter.Resources.Models.TTModel,System.IO.FileInfo,System.Boolean,System.Action{System.Boolean,System.String})">
+            <summary>
+            Saves the TTModel to a .DB file for use with external importers/exporters.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModelDb.FromDb(System.IO.FileInfo,System.Action{System.Boolean,System.String})">
+            <summary>
+            Loads a TTModel file from a given SQLite3 DB filepath.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModelDb.BuildListFromTable``1(System.String,System.String,FfxivResourceConverter.Resources.Models.TTModelDb.WhereClause,System.Func{FfxivResourceConverter.Resources.Models.TTModelDb.CacheReader,``0})">
+            <summary>
+            Creates a list from the data entries in a cache table, using the given where clause and predicate.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTModelDb.WhereClause">
+            <summary>
+            Class for composing SQL Where clauses programatically.
+            A [WhereClause] with any [Inner] entries is considered
+            a parenthetical group and has its own Column/Value/Comparer ignored.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModelDb.WhereClause.GetSql(System.Boolean,System.Boolean)">
+            <summary>
+            Generates the body of the Where clause, without the starting ' where '.
+            </summary>
+            <param name="includeWhere">If literal word ' where ' should be included.</param>
+            <param name="skipJoin">If the [and/or] should be skipped.</param>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTModelDb.CacheReader">
+            <summary>
+            A thin wrapper for the SQLiteDataReader class that
+            helps with string column accessors, NULL value coalescence, and
+            ensures the underlying reader is properly closed and destroyed to help
+            avoid lingering file handles.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModelDb.CacheReader.Raw">
+            <summary>
+            Gets returns ther raw SQLiteDataReader object.
+            </summary>
+        </member>
+        <member name="P:FfxivResourceConverter.Resources.Models.TTModelDb.CacheReader.Columns">
+            <summary>
+            Gets column names/keys.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModelDb.CacheReader.NextRow">
+            <summary>
+            Moves forward to the next row.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Models.TTModelMdl.FromRaw(FfxivResourceConverter.Resources.Model,System.Action{System.Boolean,System.String})">
+            <summary>
+            Creates and populates a TTModel object from a raw XivMdl.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTShapePart">
+            <summary>
+            Class representing a shape data part.
+            A MeshGroup may have any amount of these, including
+            multiple that have the same shape name.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTShapePart.Name">
+            <summary>
+            The raw shp_ identifier.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTShapePart.Vertices">
+            <summary>
+            The list of vertices this Shape introduces.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.TTShapePart.VertexReplacements">
+            <summary>
+            Dictionary of [Part Level Vertex #] => [Shape Part Level Vertex #] to replace it with.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.TTVertex">
+            <summary>
+            Class representing a fully qualified, Square-Enix style Vertex.
+            In SE's system, these values are all keyed to the same index value, 
+            so none of them can be separated from the others without creating
+            an entirely new vertex.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.UnknownData0.Unknown">
+            <summary>
+            Gets or sets this data block is currently unknown.
+            </summary>
+            <remarks>
+            The size of this unknown data block is [ MdlModelData.Unknown2 * 32 ].
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.UnknownData1.Unknown">
+            <summary>
+            Gets or sets this data block is currently unknown.
+            </summary>
+            <remarks>
+            The size of this unknown data block is [ MdlModelData.Unknown3 * 20 ].
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.UnknownData2.Unknown">
+            <summary>
+            Gets or sets this data block is currently unknown.
+            </summary>
+            <remarks>
+            The size of this unknown data block is [ MdlModelData.Unknown9 * 12 ].
+            </remarks>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.VertexData">
+            <summary>
+            This class contains the properties for the Vertex Data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.Positions">
+            <summary>
+            The vertex position data in Vector3 format (X, Y, Z).
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.BoneWeights">
+            <summary>
+            The bone weight array per vertex.
+            </summary>
+            <remarks>
+            Each vertex can hold a maximum of 4 bone weights.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.BoneIndices">
+            <summary>
+            The bone index array per vertex.
+            </summary>
+            <remarks>
+            Each vertex can hold a maximum of 4 bone indices.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.Normals">
+            <summary>
+            The vertex normal data in Vector4 format (X, Y, Z, W).
+            </summary>
+            <remarks>
+            The W coordinate is present but has never been noticed to be anything other than 0.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.BiNormals">
+            <summary>
+            The vertex BiNormal data in Vector3 format (X, Y, Z).
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.BiNormalHandedness">
+            <summary>
+            The vertex BiNormal Handedness data in bytes.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.Tangents">
+            <summary>
+            The vertex Tangent data in Vector3 format (X, Y, Z).
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.Colors">
+            <summary>
+            The vertex color data in Byte4 format (R, G, B, A).
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.Colors4">
+            <summary>
+            The vertex color data in Color4 format.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.TextureCoordinates0">
+            <summary>
+            The primary texture coordinates for the mesh in Vector2 format (X, Y).
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.TextureCoordinates1">
+            <summary>
+            The secondary texture coordinates for the mesh in Vector2 format (X, Y).
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexData.Indices">
+            <summary>
+            The index data for the mesh.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.VertexDataStruct">
+            <summary>
+            This class contains the properties for the Vertex Data Structures.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexDataStruct.DataBlock">
+            <summary>
+            The vertex data block the data belongs to.
+            </summary>
+            <remarks>
+            There are usually 2 data blocks and usually contain the following data
+            Block 0: Positions, Blend Weights, Blend indices
+            Block 1: Normal, Tangent, Color, Texture Coordinates.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexDataStruct.DataOffset">
+            <summary>
+            The offset to the data within the Data Block.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexDataStruct.DataType">
+            <summary>
+            The type of the data.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.Models.VertexDataStruct.DataUsage">
+            <summary>
+            What the data will be used for.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.VertexDataStruct.VertexDataType">
+            <summary>
+            Enum containing the Data Type for data entries in the Vertex Data Blocks.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.Models.VertexDataStruct.VertexUsageType">
+            <summary>
+            Enum containing the what the data entries in the Vertex Data Block will be used for.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.BoneSet">
+            <summary>
+            This class contains the properties of the Bone Index Data.
+            </summary>
+            <remarks>
+            This references the specific bones that are used by the mesh by their index in the bone string list.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.BoneSet.BoneIndices">
+            <summary>
+            The list of Bone Indices.
+            </summary>
+            <remarks>
+            This list contains the indices to the bones in MdlPathData.BoneList.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.BoneSet.BoneIndexCount">
+            <summary>
+            The number of indices in the Bone Index Data.
+            </summary>
+        </member>
+        <member name="T:FfxivResourceConverter.Resources.MdlModelData">
+            <summary>
+            This class cotains the properties for the MDL model data.
+            </summary>
+            <remarks>
+            This section of the MDL file still has a lot of unknowns.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown0">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.MeshCount">
+            <summary>
+            The total number of meshes that the model contains.
+            </summary>
+            <remarks>
+            This includes all LoD meshes.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.AttributeCount">
+            <summary>
+            The number of attributes used by the model.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.MeshPartCount">
+            <summary>
+            The total number of mesh parts the model contains.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.MaterialCount">
+            <summary>
+            The number of materials used by the model.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.BoneCount">
+            <summary>
+            The number of bones used by the model.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.BoneListCount">
+            <summary>
+            The total number of Bone Lists the model uses.
+            </summary>
+            <remarks>
+            There is usually one per LoD.
+            </remarks>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.ShapeCount">
+            <summary>
+            The number of Mesh Shapes.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.ShapePartCount">
+            <summary>
+            The number of data blocks in the mesh shapes.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.ShapeDataCount">
+            <summary>
+            The total number of indices that the mesh shapes uses.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown1">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown2">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown3">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown4">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown5">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown6">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown7">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown8">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown9">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown10a">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown10b">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown11">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown12">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown13">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown14">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown15">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown16">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="F:FfxivResourceConverter.Resources.MdlModelData.Unknown17">
+            <summary>
+            Unknown Usage.
+            </summary>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Texture.Read4444Image(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Creates bitmap from decompressed A4R4G4B4 texture data.
+            </summary>
+            <param name="textureData">The decompressed texture data.</param>
+            <param name="width">The textures width.</param>
+            <param name="height">The textures height.</param>
+            <returns>The raw byte data in 32bit.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Texture.Read5551Image(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Creates bitmap from decompressed A1R5G5B5 texture data.
+            </summary>
+            <param name="textureData">The decompressed texture data.</param>
+            <param name="width">The textures width.</param>
+            <param name="height">The textures height.</param>
+            <returns>The raw byte data in 32bit.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Texture.Read8bitImage(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Creates bitmap from decompressed A8/L8 texture data.
+            </summary>
+            <param name="textureData">The decompressed texture data.</param>
+            <param name="width">The textures width.</param>
+            <param name="height">The textures height.</param>
+            <returns>The created bitmap.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Texture.SwapRBColors(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Creates bitmap from decompressed Linear texture data.
+            </summary>
+            <param name="textureData">The decompressed texture data.</param>
+            <param name="width">The textures width.</param>
+            <param name="height">The textures height.</param>
+            <returns>The raw byte data in 32bit.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Resources.Texture.GetImageData(System.Int32)">
+            <summary>
+            Gets the raw pixel data for the texture.
+            </summary>
+            <returns>A byte array with the image data.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Compressor.Compress(System.Byte[])">
+            <summary>
+            Compresses raw byte data.
+            </summary>
+            <param name="uncompressedBytes">The data to be compressed.</param>
+            <returns>The compressed byte data.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.Compressor.Decompress(System.Byte[],System.Int32)">
+            <summary>
+            Decompresses raw byte data.
+            </summary>
+            <param name="compressedBytes">The byte data to decompress.</param>
+            <param name="uncompressedSize">The final size of the compressed data after decompression.</param>
+            <returns>The decompressed byte data.</returns>
+        </member>
+        <member name="M:FfxivResourceConverter.DDS.CreateDDSHeader(FfxivResourceConverter.Resources.Texture.XivTexFormat,System.UInt32,System.UInt32,System.UInt32,System.Int32)">
+            <summary>
+            Creates the DDS header for given texture data.
+            <see cref="!:https://msdn.microsoft.com/en-us/library/windows/desktop/bb943982(v=vs.85).aspx"/>.
+            </summary>
+            <returns>Byte array containing DDS header.</returns>
+        </member>
+    </members>
+</doc>

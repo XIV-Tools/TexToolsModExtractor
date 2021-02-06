@@ -11,6 +11,9 @@ namespace FfxivResourceConverter
 	{
 		public static bool Convert(FileInfo file, ConverterSettings settings)
 		{
+			if (string.IsNullOrEmpty(file.Extension))
+				return false;
+
 			if (file.Extension == ".tex")
 			{
 				Console.WriteLine("Converting: " + file.Name);
@@ -30,6 +33,14 @@ namespace FfxivResourceConverter
 				Material mat = Material.FromMtrl(file);
 				mat.ToJson(file, settings);
 
+				return true;
+			}
+			else if (file.Extension == ".mdl")
+			{
+				Console.WriteLine("Converting: " + file.Name);
+
+				Model mdl = Model.FromMdl(file);
+				mdl.ToFbx(file, settings);
 				return true;
 			}
 
