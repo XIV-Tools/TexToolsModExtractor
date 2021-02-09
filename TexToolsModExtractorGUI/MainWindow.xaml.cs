@@ -1,20 +1,22 @@
 ﻿// © XIV-Tools.
 // Licensed under the MIT license.
 
-using System.Windows;
-using TexToolsModExtractor;
-using System.IO;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using FfxivResourceConverter;
-
 namespace TexToolsModExtractorGUI
 {
+	using System.Windows;
+	using TexToolsModExtractor;
+	using System.IO;
+	using System.Windows.Forms;
+	using System.Collections.Generic;
+	using FfxivResourceConverter;
+	using System.Threading.Tasks;
+
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		public bool Convert { get; set; }
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -37,17 +39,24 @@ namespace TexToolsModExtractorGUI
 
 		private void OnExtractClick(object sender, RoutedEventArgs e)
 		{
+			FileInfo modPackFile = new FileInfo(this.PathBox.Text);
+			DirectoryInfo outputdirectory = new DirectoryInfo(this.OutputBox.Text);
+
 			ConverterSettings settings = new ConverterSettings();
 			settings.TextureFormat = ConverterSettings.TextureFormats.Png;
 
-			FileInfo modPackFile = new FileInfo(this.PathBox.Text);
-			DirectoryInfo outputdirectory = new DirectoryInfo(this.OutputBox.Text);
-			List<FileInfo> files = Extractor.Extract(modPackFile, outputdirectory);
-			foreach (FileInfo extractedFile in files)
+			Task.Run(() =>
 			{
-				ResourceConverter.Convert(extractedFile, settings);
-			}
+				List<FileInfo> files = Extractor.Extract(modPackFile, outputdirectory);
 
+				if (!this.Convert)
+					return;
+
+				foreach (FileInfo extractedFile in files)
+				{
+					ResourceConverter.Convert(extractedFile, settings);
+				}
+			});
 		}
 	}
 }
