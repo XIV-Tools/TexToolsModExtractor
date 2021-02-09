@@ -1604,7 +1604,7 @@
         <member name="M:FfxivResourceConverter.DDS.CreateDDSHeader(FfxivResourceConverter.Resources.Texture.XivTexFormat,System.UInt32,System.UInt32,System.UInt32,System.Int32)">
             <summary>
             Creates the DDS header for given texture data.
-            <see cref="!:https://msdn.microsoft.com/en-us/library/windows/desktop/bb943982(v=vs.85).aspx"/>.
+            <see href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb943982(v=vs.85).aspx"/>.
             </summary>
             <returns>Byte array containing DDS header.</returns>
         </member>
