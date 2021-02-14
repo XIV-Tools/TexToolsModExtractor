@@ -1,4 +1,7 @@
-﻿using System;
+﻿// © XIV-Tools.
+// Licensed under the MIT license.
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

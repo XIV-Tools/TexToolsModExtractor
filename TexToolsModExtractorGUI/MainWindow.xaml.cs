@@ -24,8 +24,10 @@ namespace TexToolsModExtractorGUI
 
 		private void OnBrowseClick(object sender, RoutedEventArgs e)
 		{
-			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Filter = "TexTools Mod Pack (*.ttmp, *.ttmp2)|*.ttmp;*.ttmp2";
+			OpenFileDialog dlg = new OpenFileDialog
+			{
+				Filter = "TexTools Mod Pack (*.ttmp, *.ttmp2)|*.ttmp;*.ttmp2"
+			};
 			dlg.ShowDialog();
 			this.PathBox.Text = dlg.FileName;
 
@@ -42,8 +44,10 @@ namespace TexToolsModExtractorGUI
 			FileInfo modPackFile = new FileInfo(this.PathBox.Text);
 			DirectoryInfo outputdirectory = new DirectoryInfo(this.OutputBox.Text);
 
-			ConverterSettings settings = new ConverterSettings();
-			settings.TextureFormat = ConverterSettings.TextureFormats.Png;
+			ConverterSettings settings = new ConverterSettings
+			{
+				TextureFormat = ConverterSettings.TextureFormats.Png
+			};
 
 			Task.Run(() =>
 			{
