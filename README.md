@@ -21,6 +21,10 @@ Just extract the `.zip` it to a folder. Doesn't matter where!
 3. Press Extract
 4. Give it a sec
 
+## Has This Helped You Out?
+
+Please consider [buying us a coffee](https://ko-fi.com/aniki) or two!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
