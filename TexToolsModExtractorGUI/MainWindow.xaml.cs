@@ -49,13 +49,13 @@ namespace TexToolsModExtractorGUI
 			{
 				List<FileInfo> files = Extractor.Extract(modPackFile, outputdirectory);
 
-				if (!this.Convert)
-					return;
 
 				foreach (FileInfo extractedFile in files)
 				{
 					ResourceConverter.Convert(extractedFile, settings);
 				}
+
+				System.Windows.MessageBox.Show("Done!", "Extract Successful");
 			});
 		}
 	}

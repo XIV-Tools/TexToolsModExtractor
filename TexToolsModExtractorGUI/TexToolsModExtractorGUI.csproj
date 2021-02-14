@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	<OutputType>WinExe</OutputType>
@@ -8,18 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\XIVToolsIcon.png" />
+	<None Remove="Assets\XIVToolsIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\XIVToolsIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+	<Content Include="Assets\XIVToolsIcon.png">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
   </ItemGroup>
 
   <ItemGroup>
 	<ProjectReference Include="..\Extractor\TexToolsModExtractor.csproj" />
 	<ProjectReference Include="..\FfxivResourceConverter\FfxivResourceConverter.csproj" />
+	<ProjectReference Include="..\libs\XivToolsWpf\XivToolsWpf.csproj" />
   </ItemGroup>
 
 </Project>

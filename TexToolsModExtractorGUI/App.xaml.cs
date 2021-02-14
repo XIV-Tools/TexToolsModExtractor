@@ -13,5 +13,10 @@ namespace TexToolsModExtractorGUI
 	/// </summary>
 	public partial class App : Application
 	{
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			XivToolsWpf.Themes.Apply(XivToolsWpf.Brightness.Dark, XivToolsWpf.Colors.DeepOrange);
+			base.OnStartup(e);
+		}
 	}
 }
