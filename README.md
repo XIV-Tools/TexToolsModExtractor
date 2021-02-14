@@ -2,13 +2,17 @@
 
 A super simple and lightweight tool to extract the individual assets from a TexTools modpack (TTMP/TTMP2). 
 
-Currently only supports images- .tex files will be exported as .png for use in image editing programs, etc.
+Currently only supports images- `.tex` files will be exported as `.png` for use in image editing programs, etc.
 
-Model extraction as .fbx is pending.
+Model conversion to `.fbx` is pending.
 
 ## Prerequisites
 
 [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0) installed on your computer.
+
+## Installation
+
+Just extract the `.zip` it to a folder. Doesn't matter where!
 
 ## How to Use
 
