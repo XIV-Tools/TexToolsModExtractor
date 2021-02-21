@@ -53,7 +53,6 @@ namespace TexToolsModExtractorGUI
 			{
 				List<FileInfo> files = Extractor.Extract(modPackFile, outputdirectory);
 
-
 				foreach (FileInfo extractedFile in files)
 				{
 					ResourceConverter.Convert(extractedFile, settings);

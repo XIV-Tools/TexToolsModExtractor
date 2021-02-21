@@ -35,14 +35,14 @@ namespace FfxivResourceConverter
 
 				return true;
 			}
-			else if (file.Extension == ".mdl")
+			/*else if (file.Extension == ".mdl")
 			{
 				Console.WriteLine("Converting: " + file.Name);
 
 				Model mdl = Model.FromMdl(file);
 				mdl.ToFbx(file, settings);
 				return true;
-			}
+			}*/
 
 			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine($"Unknown file format: {file.Extension}");
